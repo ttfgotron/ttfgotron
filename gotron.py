@@ -285,7 +285,7 @@ def push(df,str):
 #     import gspread as gs
 #     data_list = df.values.tolist()
 #     ws.append_rows(data_list)
-#     import gspread_dataframe as gd
+    import gspread_dataframe as gd
     import gspread as gs
 
     ws = gc.open("TTF - Nhập liệu gỗ tròn").worksheet(str)
