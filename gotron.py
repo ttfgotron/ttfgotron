@@ -279,12 +279,20 @@ def push(df,str):
          'https://www.googleapis.com/auth/drive'],
     )
     gc = gspread.authorize(credentials)
-    spreadsheet_key='1_ZhSbjL2EfbyTLyWCpTrHJi6kCku1j0eVwQ_g1R2QTM'
-    ws = gc.open("TTF - Nhập liệu gỗ tròn").worksheet(str)
-    import gspread_dataframe as gd
+#     spreadsheet_key='1_ZhSbjL2EfbyTLyWCpTrHJi6kCku1j0eVwQ_g1R2QTM'
+#     ws = gc.open("TTF - Nhập liệu gỗ tròn").worksheet(str)
+#     import gspread_dataframe as gd
+#     import gspread as gs
+#     data_list = df.values.tolist()
+#     ws.append_rows(data_list)
+#     import gspread_dataframe as gd
     import gspread as gs
-    data_list = df.values.tolist()
-    ws.append_rows(data_list)
+
+    ws = gc.open("TTF - Nhập liệu gỗ tròn").worksheet(str)
+    existing = gd.get_as_dataframe(ws)
+    # existing
+    updated = existing.append(df)
+    gd.set_with_dataframe(ws, updated)
     st.success('Bấm Xóa nội dung thẻ kiện cũ để tiếp tục')
 
 
